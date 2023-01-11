@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>auth
+
+    </title>
+</head>
+
+<body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/oidc-client/1.6.1/oidc-client.js"></script>
+    <script>
+
+        var mgr = new Oidc.UserManager();
+        mgr.signinRedirectCallback().then(() => {
+            window.history.replaceState({},
+                window.document.title,
+                window.location.origin);
+            window.location = "/dashboard";
+        }, error => {
+            console.error(error);
+        });
+
+    </script>
+</body>
+
+</html>
