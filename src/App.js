@@ -2,7 +2,7 @@ import React from 'react';
 
 import SilentRenew from './components/silent-renew/silent-renew';
 import { AuthProvider } from 'oidc-react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './components/dashboard/dashboard';
 import Login from './components/login/login';
 import Navbar from './components/nav/navbar';
