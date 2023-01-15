@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import AuthService from '../../services/AuthService';
-import JWTInterceptor from '../../services/jwtinterceptor';
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthServiceContext } from '../../services/AuthService';
+import { useAuth, withAuth } from 'oidc-react';
+
 const Login = () => {
-  const auth = AuthService();
+  const auth = useAuth();
 
   useEffect(() => {
-    if (!auth.loggedIn) {
-      auth.login();
+    if (!auth && !auth.userData) {
+      auth.signIn();
+    } else {
+      window.location.hash = '/';
     }
-    console.log(auth.loggedIn);
-  }, [auth.loggedIn]);
-  return (
-    <div>
-      <JWTInterceptor />
-      {auth.loggedIn ? <h1>You are logged in</h1> : <h1>Please wait...</h1>}
-    </div>
-  );
+  }, []);
+
+  return <div></div>;
 };
 
-export default Login;
+export default withAuth(Login);

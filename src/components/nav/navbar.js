@@ -1,24 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import AuthService from '../../services/AuthService';
-
+import { AuthServiceContext } from '../../services/AuthService';
+import { useAuth } from 'oidc-react';
 import './nav.css';
 
-const Navbar = ({ user }) => {
-  const auth = AuthService();
+const Navbar = () => {
+  const auth = useAuth();
 
-  
+  if (auth && auth.userData) {
+    return (
+      <nav className='nav'>
+        <ul className='nav-list'>
+          <li className='user-name'>
+            <Link to='/'>
+              {'['} {auth.userData.profile.name} {']'}
+            </Link>
+          </li>
+          <li>
+            <button className='logout-btn' onClick={() => auth.signOut()}>
+              logout
+            </button>
+          </li>
+        </ul>
+      </nav>
+    );
+  }
+
   return (
     <nav>
-      <ul>
+      <ul className='nav-list'>
         <li>
-          <Link to='/'>Dashboard</Link>
-        </li>
-        <li>
-          <Link to='/login'>login</Link>
-        </li>
-        <li>
-          <Link to='/signup'>Signup</Link>
+          <button className='logout-btn' onClick={() => auth.signIn()}>
+            login
+          </button>
         </li>
       </ul>
     </nav>

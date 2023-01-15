@@ -1,24 +1,80 @@
 nav {
-    display: flex;
-   width: 100%;
+  display: flex;
+    max-width: 100%;
   }
   
   nav ul {
     display: flex;
     flex-direction: row;
-    
+    justify-content: space-between;
    
     width: 100%;
+    flex: 1;
   }
 
   nav ul li { 
     margin: 0;
     padding: 0;
     list-style: none;
-    flex: 1;
+    
     
   }
   nav ul li a{
     text-decoration: none;
-    color: rgb(42, 109, 87);
+    color: rgb(129, 200, 176);
+    
   }
+
+  .user-name{
+    font-weight: 900;
+    font-size: 25px;
+    
+  }
+
+  
+.logout-btn{
+  box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	background:linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
+	background-color:#ffc477;
+	border-radius:11px;
+	border:2px solid #eeb44f;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	padding:8px 18px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #cc9f52;
+  margin-right: 30px;
+}
+.logout-btn:hover {
+	background:linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
+	background-color:#fb9e25;
+}
+.logout-btn:active {
+	position:relative;
+	top:1px;
+}
+.login-prompt{
+ display: flex;
+ justify-content: center;
+ background-color: rgb(206, 59, 26);
+}
+
+.blink {
+  animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
